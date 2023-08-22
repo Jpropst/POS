@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Grand Circus Gaming Co.</title>
+  </head>
+  <body>
+    <h1>Grand Circus Gaming Co.</h1>
+    <div id="menu"></div>
+    <div id="cart"></div>
+    <button id="checkoutButton">Checkout</button>
+
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Checkout</h2>
+        <div id="checkoutSummary"></div>
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod">
+          <option value="cash">Cash</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="processPayment">Process Payment</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
