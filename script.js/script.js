@@ -30,11 +30,11 @@ products.forEach((product) => {
 
 const cartItems = [];
 
-function addToCart(product) {
+const addToCart = (product) => {
   cartItems.push(product);
   updateCartDisplay();
-}
-function updateCartDisplay() {
+};
+const updateCartDisplay = () => {
   cart.innerHTML = "";
   cartItems.forEach((product) => {
     const cartItem = document.createElement("div");
@@ -42,7 +42,7 @@ function updateCartDisplay() {
     cartItem.textContent = product.name;
     cart.appendChild(cartItem);
   });
-}
+};
 checkoutButton.addEventListener("click", () => {
   updateCheckoutSummary();
   checkoutModal.style.display = "block";
