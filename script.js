@@ -54,3 +54,44 @@ processPaymentButton.addEventListener("click", () => {
 modalClose.addEventListener("click", () => {
   checkoutModal.style.display = "none";
 });
+const updateCheckoutSummary = () => {
+  checkoutSummary.innerHTML = "";
+  let subtotal = 0;
+  cartItems.forEach((product) => {
+    const cartSummaryItem = document.createElement("div");
+    cartSummaryItem.textContent = `${product.name} - $${product.price.toFixed(
+      2
+    )}`;
+    checkoutSummary.appendChild(cartSummaryItem);
+    subtotal += product.price;
+  });
+  const salesTax = subtotal * 0.08;
+  const total = subtotal + salesTax;
+  const summaryTotal = document.createElement("div");
+  summaryTotal.textContent = `Subtotal: $${subtotal.toFixed(
+    2
+  )} | Sales Tax: $${salesTax.toFixed(2)} | Total: $${total.toFixed(2)}`;
+  checkoutSummary.appendChild(summaryTotal);
+};
+const processPayment = (paymentMethod) => {
+  if (paymentMethod === "cash") {
+    const amountTendered = +prompt("Enter amount tendered:") * 100;
+    const subtotal = cartItems.reduce((sum, product) => sum + product.price, 0);
+    const salesTax = subtotal * 0.08;
+    const total = subtotal + salesTax;
+    if (amountTendered < total) {
+      alert("Amount tendered is not enough.");
+    } else {
+      const change = amountTendered - total;
+      showReceipt(subtotal, salesTax, total, "Cash", change);
+    }
+  } else if (paymentMethod === "card") {
+    const cardNumber = prompt("Enter card number:");
+    const expiration = prompt("Enter card expiration:");
+    const cvv = prompt("Enter CVV:");
+    showReceipt(subtotal, salesTax, total, "Card");
+  }
+  checkoutModal.style.display = "none";
+  cartItems.length = 0;
+  updateCartDisplay();
+};
