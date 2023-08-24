@@ -11,6 +11,9 @@ body {
 header {
   display: flex;
 }
+ul {
+  list-style-type: none;
+}
 img {
   height: 100px;
   width: 100px;
