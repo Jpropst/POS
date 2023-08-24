@@ -7,64 +7,68 @@
     <title>Grand Circus Gaming Co.</title>
   </head>
   <body>
-    <h1>Grand Circus Gaming Co.</h1>
-    <div id="menu"></div>
-    <div id="cart"></div>
-    <button id="checkoutButton">Checkout</button>
+    <header>
+      <h1>Grand Circus Gaming Co.</h1>
+    </header>
+    <div class="menu-container">
+      <div id="menu">
+        <div class="product-display" id="product-display">
+          <div class="products" id="cah">
+            <img src="imgs/cah.jpg" alt="cards against humanity" />
+          </div>
 
-    <div class="product-display" id="product-display">
-      <div class="products" id="cah">
-        <img src="imgs/cah.jpg" alt="cards against humanity" />
-      </div>
+          <div class="products" id="catan">
+            <img src="imgs/catan.jpg" alt="Catan" />
+          </div>
 
-      <div class="products" id="catan">
-        <img src="imgs/catan.jpg" alt="catan" />
-      </div>
+          <div class="products" id="monopoly">
+            <img src="imgs/monopoly.jpg" alt="Monopoly" />
+          </div>
 
-      <div class="products" id="monopoly">
-        <img src="imgs/monopoly.jpg" alt="Monopoly" />
-      </div>
+          <div class="products" id="pf">
+            <img src="imgs/pf.jpg" alt="path-finders" />
+          </div>
 
-      <div class="products" id="pf">
-        <img src="imgs/pf.jpg" alt="Path Finders" />
-      </div>
+          <div class="products" id="uno">
+            <img src="imgs/uno.jpg" alt="Uno" />
+          </div>
 
-      <div class="products" id="uno">
-        <img src="imgs/uno.jpg" alt="Uno" />
-      </div>
+          <div class="products" id="wingspan">
+            <img src="imgs/Wingspan.jpg" alt="Wingspan" />
+          </div>
 
-      <div class="products" id="Wingspan">
-        <img src="imgs/Wingspan.jpg" alt="Wingspan" />
-      </div>
+          <div class="products" id="terraforming">
+            <img src="imgs/tm.jpg" alt="Terraforming Mars" />
+          </div>
 
-      <div class="products" id="Terraforming">
-        <img src="imgs/tm.jpg" alt="Terraforming Mars" />
-      </div>
+          <div class="products" id="scrabble">
+            <img src="imgs/scrabble.jpg" alt="Scrabble" />
+          </div>
 
-      <div class="products" id="scrabble">
-        <img src="imgs/scrabble.jpg" alt="Scrabble" />
-      </div>
+          <div class="products" id="candy-land">
+            <img src="imgs/cl.jpg" alt="Candy Land" />
+          </div>
 
-      <div class="products" id="Candy Land">
-        <img src="imgs/cl.jpg" alt="Candy Land" />
-      </div>
-
-      <div class="products" id="The Game Of Life">
-        <img src="imgs/gol.jpg" alt="The Game Of Life" />
+          <div class="products" id="the-game-of-life">
+            <img src="imgs/gol.jpg" alt="The Game Of Life" />
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="checkoutModal" class="modal">
+    <div id="checkout-modal" class="modal">
+      <div id="cart"></div>
+      <button id="checkout-button">Checkout</button>
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Checkout</h2>
-        <div id="checkoutSummary"></div>
-        <label for="paymentMethod">Payment Method:</label>
-        <select id="paymentMethod">
+        <div id="checkout-summary"></div>
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method">
           <option value="cash">Cash</option>
           <option value="card">Card</option>
         </select>
-        <button id="processPayment">Process Payment</button>
+        <button id="process-payment">Process Payment</button>
       </div>
     </div>
 
