@@ -31,5 +31,10 @@ img {
   margin-bottom: 20px;
 }
 
+.hidden {
+  background-color: coral;
+  border: solid 2px black;
+  position: absolute;
+}
 @media (min-width: 768px) {
 }
