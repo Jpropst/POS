@@ -203,10 +203,21 @@ const processPayment = (paymentMethod) => {
     const expiration = prompt("Enter card expiration:");
     const cvv = prompt("Enter CVV:");
     showReceipt(subtotal, salesTax, total, "Card");
+    if (!/^\d{16}$/.test(cardNumber)) {
+      alert("Invalid card number please enter a 16-digit number");
+    }
+    if (!/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(expiration)) {
+      alert("Invalid expiration date. Format should be MM/YY or MM/YYYY.");
+      return;
+    }
+    if (!/^\d{3}$/.test(cvv)) {
+      alert("Invalid CVV. It should be a 3-digit number.");
+      return;
+    }
   }
-  checkoutModal.style.display = "none";
-  cartItems.length = 0;
-  updateCartDisplay();
+  // checkoutModal.style.display = "none";
+  // cartItems.length = 0;
+  // updateCartDisplay();
 };
 
 const showReceipt = (subtotal, salesTax, total, paymentMethod, change) => {};
