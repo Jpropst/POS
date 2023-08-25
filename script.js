@@ -31,6 +31,34 @@ menuItems.forEach((product) => {
 
 const cartItems = [];
 
+document.addEventListener("DOMContentLoaded", function () {
+  const productImages = document.querySelectorAll(".products img");
+  productImages.forEach((img) => {
+    img.addEventListener("click", (e) => displayModal(e, img.dataset.name));
+  });
+});
+
+function displayModal(event, name) {
+  const productName = event.target.getAttribute("data-name");
+
+  const product = menuItems.find((item) => item.name === productName);
+
+  if (!product) return;
+
+  const modal = document.getElementById("productmodal");
+  const modalImg = document.getElementById("productmodal-img");
+  const modalName = document.getElementById("productmodal-name");
+  const modalPrice = document.getElementById("productmodal-price");
+  // const modalDescription = document.getElementById("productmodal-description");
+  // ^ waiting for array to reflect
+
+  modalImg.src = event.target.src;
+  modalName.textContent = product.name;
+  modalPrice.textContent = `$${product.price.toFixed(2)}`;
+
+  modal.classList.remove("hidden");
+}
+
 const addToCart = (product) => {
   cartItems.push(product);
   updateCartDisplay();
