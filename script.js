@@ -137,8 +137,7 @@ function displayModal(event, name) {
   modalImg.src = event.target.src;
   modalName.textContent = product.name;
   modalPrice.textContent = `$${product.price.toFixed(2)}`;
-
-  modal.classList.remove("hidden");
+  modalDescription.textContent = product.description;
 }
 
 const addToCart = (product) => {
