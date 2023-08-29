@@ -7,6 +7,7 @@ const paymentMethodSelect = document.getElementById("payment-method");
 const processPaymentButton = document.getElementById("process-payment");
 const modalClose = document.getElementsByClassName("close")[0];
 const checkoutSummary = document.getElementById("checkout-summary");
+const addToCartButton = document.getElementById("add-to-cart");
 
 const menuItems = [
   {
@@ -104,13 +105,13 @@ const menuItems = [
 //   { name: "Settlers of Catan", price: 41.99, quantity: 10 },
 // ];
 
-menuItems.forEach((product) => {
-  const item = document.createElement("div");
-  item.className = "menu-item";
-  item.textContent = `${product.name} - $${product.price.toFixed(2)}`;
-  item.addEventListener("click", () => addToCart(product));
-  menu.appendChild(item);
-});
+// menuItems.forEach((product) => {
+//   const item = document.createElement("div");
+//   item.className = "menu-item";
+//   item.textContent = `${product.name} - $${product.price.toFixed(2)}`;
+//   item.addEventListener("click", () => addToCart(product));
+//   menu.appendChild(item);
+// });
 
 const cartItems = [];
 
@@ -138,6 +139,7 @@ function displayModal(event, name) {
   modalName.textContent = product.name;
   modalPrice.textContent = `$${product.price.toFixed(2)}`;
   modalDescription.textContent = product.description;
+  addToCartButton.onclick = () => addToCart(product);
 }
 
 const addToCart = (product) => {
