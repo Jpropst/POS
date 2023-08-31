@@ -7,6 +7,7 @@ const paymentMethodSelect = document.getElementById("payment-method");
 const processPaymentButton = document.getElementById("process-payment");
 const modalClose = document.getElementsByClassName("close")[0];
 const checkoutSummary = document.getElementById("checkout-summary");
+const addToCartButton = document.getElementById("add-to-cart");
 
 const menuItems = [
   {
