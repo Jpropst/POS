@@ -107,7 +107,7 @@
       </ul>
     </div>
 
-    <div id="checkout-modal" class="modal">
+    <div id="checkout-modal" >
       <div id="cart"></div>
       <button id="checkout-button">Checkout</button>
       <div class="modal-content">
@@ -120,8 +120,17 @@
           <option value="card">Card</option>
         </select>
         <button id="process-payment">Process Payment</button>
+        <div id="receipt-section" style="display:none;">
+          <h2>Grand Circus Gaming Co. Receipt</h2>
+          <div id="receipt-subtotal"></div>
+          <div id="receipt-tax"></div>
+          <div id="receipt-total"></div>
+          <div id="receipt-payment-method"></div>
+          <div id="receipt-tendered"></div>
+          <div id="receipt-change"></div>
       </div>
-    </div>
+  </div>
+    
 
     <script src="script.js"></script>
   </body>

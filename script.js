@@ -164,7 +164,6 @@ const updateCartDisplay = () => {
 checkoutButton.addEventListener("click", () => {
   updateCheckoutSummary();
   // added these two lines to clear cart after checking out
-  cartItems.length = 0;
   updateCartDisplay();
   checkoutModal.style.display = "block";
 });
@@ -202,14 +201,12 @@ const updateCheckoutSummary = () => {
 };
 
 const processPayment = (paymentMethod) => {
-  let subtotal = 0;
-  let salesTax = 0;
-  let total = 0;
+  let subtotal = cartItems.reduce((sum, product) => sum + product.price, 0);
+  let salesTax = subtotal * 0.08;
+  let total = subtotal + salesTax;
+
   if (paymentMethod === "cash") {
-    const amountTendered = +prompt("Enter amount tendered:") * 100;
-    subtotal = cartItems.reduce((sum, product) => sum + product.price, 0);
-    salesTax = subtotal * 0.08;
-    total = subtotal + salesTax;
+    const amountTendered = +prompt("Enter amount tendered:");
     if (amountTendered < total) {
       alert("Amount tendered is not enough.");
     } else {
@@ -221,18 +218,38 @@ const processPayment = (paymentMethod) => {
     const expiration = prompt("Enter card expiration:");
     const cvv = prompt("Enter CVV:");
     showReceipt(subtotal, salesTax, total, "Card");
-    if (!/^\d{16}$/.test(cardNumber)) {
-      alert("Invalid card number please enter a 16-digit number");
-    }
-    if (!/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(expiration)) {
-      alert("Invalid expiration date. Format should be MM/YY or MM/YYYY.");
-      return;
-    }
-    if (!/^\d{3}$/.test(cvv)) {
-      alert("Invalid CVV. It should be a 3-digit number.");
-      return;
-    }
   }
 };
 
-const showReceipt = (subtotal, salesTax, total, paymentMethod, change) => {};
+const showReceipt = (subtotal, salesTax, total, paymentMethod, change) => {
+  cartItems.length = 0;
+  // added these two lines to clear cart after checking out
+  updateCartDisplay();
+  checkoutModal.style.display = "block";
+  document.getElementById(
+    "receipt-subtotal"
+  ).textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.getElementById(
+    "receipt-tax"
+  ).textContent = `Sales Tax (8%): $${salesTax.toFixed(2)}`;
+  document.getElementById(
+    "receipt-total"
+  ).textContent = `Total: $${total.toFixed(2)}`;
+  document.getElementById(
+    "receipt-payment-method"
+  ).textContent = `Payment Method: ${paymentMethod}`;
+
+  if (paymentMethod === "Cash") {
+    document.getElementById(
+      "receipt-tendered"
+    ).textContent = `Amount Tendered: $${(change + total).toFixed(2)}`;
+    document.getElementById(
+      "receipt-change"
+    ).textContent = `Change: $${change.toFixed(2)}`;
+  } else {
+    document.getElementById("receipt-tendered").style.display = "none";
+    document.getElementById("receipt-change").style.display = "none";
+  }
+
+  document.getElementById("receipt-section").style.display = "block";
+};
